@@ -1,0 +1,40 @@
+server:
+  port: 18082
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+        port: 8719
+    alibaba:
+      seata:
+        tx-service-group: gamll-tx-group
+
+  zipkin:
+    base-url: http://127.0.0.1:9411
+    sender:
+      type: web
+    discovery-client-enabled: true
+  sleuth:
+    sampler:
+      probability: 1
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.19.129:3306/guli_sms
+    username: root
+    password: root
+  redis:
+    host: 192.168.19.129
+feign:
+  sentinel:
+    enabled: true
+mybatis-plus:
+  #idea中显示的是一个. 但是这是一个子目录/(容易犯错)
+  mapper-locations: classpaht:mapper/wms/**/*.xml
+  type-aliases-package: com.atguigu.gmall.wms.entity
+  global-config:
+    db-config:
+      id-type: auto

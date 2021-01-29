@@ -1,0 +1,17 @@
+server:
+  port: 18081
+feign:
+  sentinel:
+    enabled: true
+mybatis-plus:
+  #idea中显示的是一个. 但是这是一个子目录/(容易犯错)
+  mapper-locations: classpaht:mapper/pms/**/*.xml
+  type-aliases-package: com.atguigu.gmall.pms.entity
+  global-config:
+    db-config:
+      id-type: auto
+spring:
+  cloud:
+    alibaba:
+      seata:
+        tx-service-group: gamll-tx-group
